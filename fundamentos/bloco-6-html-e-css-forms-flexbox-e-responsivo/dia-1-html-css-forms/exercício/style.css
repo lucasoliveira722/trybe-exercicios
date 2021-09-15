@@ -1,0 +1,26 @@
+h1 {
+  text-align: center;
+}
+
+fieldset {
+  width: 50%;
+  text-align: justify;
+  margin:auto;
+  padding: 30px;
+  line-height: 1.6;
+}
+
+button {
+  display: block;
+  margin: auto;
+  width: 200px;
+  height: 30px;
+  margin-top: 15px;
+  background-color: lightblue;
+  color: black;
+  border-radius: 10px;
+}
+
+textarea {
+  resize: none;
+}
