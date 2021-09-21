@@ -1,0 +1,57 @@
+body {
+  margin: 15px;
+}
+h1 {
+  font-size: 30px;
+}
+h2 {
+
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 5px;
+}
+
+section p {
+  font-size: 20px;
+}
+
+@media (min-width: 800px) {
+  body {
+    background-color:aquamarine;
+    margin: 35px;
+  }
+
+  section p {
+    font-size: 25px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 1600px;
+  }
+
+  figure {
+    margin: 10px;
+  }
+} 
+
+@media screen and (min-width: 1020px) {
+  body {
+    background: rgba(0,255,0,.2);
+    margin: 25px 10%;
+    max-width: 1130px;
+  }
+
+  figure {
+    width: 30%;
+    margin-right: 2.5%;
+  }
+}
