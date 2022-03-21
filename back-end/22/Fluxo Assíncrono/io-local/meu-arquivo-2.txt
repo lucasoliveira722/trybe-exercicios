@@ -1,0 +1,1 @@
+Este é o meu arquivo de teste da leitura de arquivos com métodos assíncronos, utilizando a função "fs" do node e o método "readFile".
