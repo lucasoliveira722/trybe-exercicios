@@ -1,8 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const authMiddleware = require('./auth-middleware');
 
 const app = express();
 app.use(bodyParser.json());
+
+app.get('/open', function (req,res){
+  res.send('open!')
+});
+
+app.use(authMiddleware);
 
 const recipes = [
   { id: 1, name: 'Lasanha', preco: 40.0, tempoDePreparo: 30 },
@@ -28,13 +35,21 @@ app.get('/recipes/:id', function (req, res) {
   res.status(200).json(recipe);
 });
 
-app.post('/recipes', function (req, res) {
+function validateName(req, res, next) {
+  const { name } = req.body;
+  if (!name || name === '') return res.status(400).json({ message: 'Invalid data!'});
+
+  next();
+};
+
+app.post('/recipes', validateName, function (req, res) {
   const { id, name, price } = req.body;
-  recipes.push({ id, name, price});
+  const { username } = req.user;
+  recipes.push({ id, name, price, chef: username});
   res.status(201).json({ message: 'Recipe created successfully!'});
 });
 
-app.put('/recipes/:id', function (req, res) {
+app.put('/recipes/:id', validateName, function (req, res) {
   const { id } = req.params;
   const { name, price } = req.body;
   const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id));
